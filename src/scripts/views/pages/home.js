@@ -30,8 +30,8 @@ const Home = {
                   <button class="icon_right-arrow-black right" aria-label="right-arrow"></button>
 
                   <div class="box-item">
-                      <img src="./images/slide-1.svg" alt="Slide 1">
-                      <img src="./images/seminar-1.jpg" alt="Slide 1">
+                      <img src="./images/bg-default.svg" alt="Slide 1">
+                      <img src="./images/bg-default.svg" alt="Slide 1">
                   </div>
               </div>
           </div>  
@@ -57,7 +57,7 @@ const Home = {
 
           <div class="slide-box">
               <article class="seminar type-android">
-                  <img src="./images/seminar-1.jpg" alt="Icon Seminar 1">
+                  <img src="./images/bg-default.svg" alt="Icon Seminar 1">
                   <div class="text-box">
                       <div class="type-box">
                           <div class="icon_ type-icon"></div>
@@ -69,7 +69,7 @@ const Home = {
                   <button>Lihat Detail</button>
               </article>
               <article class="seminar type-web">
-                  <img src="./images/seminar-1.jpg" alt="Icon Seminar 1">
+                  <img src="./images/bg-default.svg" alt="Icon Seminar 1">
                   <div class="text-box">
                       <div class="type-box">
                           <div class="icon_ type-icon"></div>
@@ -81,7 +81,7 @@ const Home = {
                   <button href="#/detail">Lihat Detail</button>
               </article>
               <article class="seminar type-ui">
-                  <img src="./images/seminar-1.jpg" alt="Icon Seminar 1">
+                  <img src="./images/bg-default.svg" alt="Icon Seminar 1">
                   <div class="text-box">
                       <div class="type-box">
                           <div class="icon_ type-icon"></div>
@@ -110,14 +110,14 @@ const Home = {
                   <div class="icon-play-box">
                       <div class="icon_play-white"></div>
                   </div>
-                  <img src="" alt="">
+                  <img src="./images/bg-default.svg" alt="">
                   <h2>Course</h2>
               </article>
               <article class="course">
                   <div class="icon-play-box">
                       <div class="icon_play-white"></div>
                   </div>
-                  <img src="" alt="">
+                  <img src="./images/bg-default.svg" alt="">
                   <h2>Course</h2>
               </article>
           </div>
@@ -133,9 +133,7 @@ const Home = {
 
           <div class="detail-box">
               <div class="content-box">
-                  <video controls>
-                      <source src="./videos/movie-bunny.mp4" type="video/mp4">
-                  </video>
+                  <video controls></video>
 
                   <div class="text-box">
                       <span class="type-name">Entertaiment</span>
@@ -187,7 +185,7 @@ const Home = {
           <div class="slide-box">
               <article class="testimoni">
                   <div class="info-user">
-                      <img src="./images/users/user-1.jpg" alt="User 1">
+                      <img src="./images/profile-default.svg" alt="User 1">
                       <div class="text-box">
                           <h2>Ronald Richards</h2>
                           <p>Bisnis Man</p>
@@ -343,7 +341,8 @@ const Home = {
     const buttonClose   = $('.course-box > .detail-box > .content-box > button.close');
     const detailBox     = {
       self: $('.course-box > .detail-box'),
-      video: $('.course-box > .detail-box video > source'),
+      video: $('.course-box > .detail-box video'),
+      source: document.createElement('source'),
       type_name: $('.course-box > .detail-box .text-box > .type-name'),
       title: $('.course-box > .detail-box .text-box > h2'),
       description: $('.course-box > .detail-box .text-box > p'),
@@ -354,7 +353,8 @@ const Home = {
         document.body.classList.add('overflow-hidden');
         detailBox.self.classList.add('display-detail-box');
 
-        detailBox.video.src = courseData[index].src;
+        detailBox.source.setAttribute('src', courseData[index].src);
+        detailBox.video.appendChild(detailBox.source);
         detailBox.type_name.innerText = courseData[index].type_name;
         detailBox.title.innerText = courseData[index].title;
         detailBox.description.innerText = courseData[index].description;
